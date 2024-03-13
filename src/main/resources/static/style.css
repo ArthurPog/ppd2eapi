@@ -39,11 +39,3 @@ body {
     margin: 0;
     padding: 0;
 }
-
-main {
-    display: grid;
-    place-items: center;
-    text-align: center;
-    margin-top: 3rem;
-    padding: 0 1.5rem;
-}
