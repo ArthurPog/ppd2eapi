@@ -9,4 +9,9 @@ public record PpdeapiController() {
     public String homePage() {
         return "index";
     }
+
+    @GetMapping({"/register"})
+    public String register() {
+        return "register";
+    }
 }
