@@ -72,7 +72,7 @@ main {
     font-size: 1rem;
     margin: .5rem 0;
     border-style: hidden;
-    padding: .5rem;
+    padding: .5rem 2rem;
     border-radius: .5rem;
     background: var(--teal);
     color: white;
@@ -97,5 +97,15 @@ a:hover {
 .profile-image {
     max-width: 8rem;
     margin-bottom: 2rem;
+}
+
+.announcement {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.results {
+    margin-top: 2rem;
 }
 
