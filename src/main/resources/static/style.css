@@ -31,7 +31,6 @@ font-sizes and line-heights as variables */
 }
 
 body {
-    background: #d6e2f0;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -39,3 +38,59 @@ body {
     margin: 0;
     padding: 0;
 }
+
+main {
+    display: grid;
+    place-items: center;
+    text-align: center;
+    padding: 2rem;
+    background: var(--teal-2);
+    border-radius: 1rem;
+    -webkit-box-shadow: 0px 11px 34px -13px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 11px 34px -13px rgba(0,0,0,0.75);
+    box-shadow: 0px 11px 34px -13px rgba(0,0,0,0.75);
+}
+
+*:focus {
+    outline: solid var(--black) 2px;
+    outline-offset: 4px;
+}
+
+.field {
+    font-family: 'Red Hat Display', sans-serif;
+    font-size: 1rem;
+    display: block;
+    padding: .5rem;
+    border-radius: .5rem;
+    border-style: hidden;
+    margin: .5rem 0;
+}
+
+.button {
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 900;
+    font-size: 1rem;
+    margin: .5rem 0;
+    border-style: hidden;
+    padding: .5rem;
+    border-radius: .5rem;
+    background: var(--teal);
+    color: white;
+}
+
+.button:hover {
+    background: var(--teal-2);
+    outline: solid 1px var(--cyan);
+    color: white;
+}
+
+.button:active {
+    background: var(--white);
+    outline: solid 1px var(--cyan);
+    color: var(--teal);
+}
+
+a:hover {
+    color: white;
+}
+
