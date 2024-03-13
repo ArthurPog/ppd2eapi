@@ -94,3 +94,8 @@ a:hover {
     color: white;
 }
 
+.profile-image {
+    max-width: 8rem;
+    margin-bottom: 2rem;
+}
+
