@@ -1,5 +1,6 @@
-package org.example.ppd2eapi.services.implications;
+package org.example.ppd2eapi.services.implementations;
 
+import org.example.ppd2eapi.models.User;
 import org.example.ppd2eapi.repositories.UserRepo;
 import org.example.ppd2eapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +18,11 @@ public class UserServiceImp implements UserService {
     }
 
     // methods
+    @Override
+    public void addUser(User user) {
+        userRepo.save(user);
+    }
+
+
 
 }

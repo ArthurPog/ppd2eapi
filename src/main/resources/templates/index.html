@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>MovieDB Shenanigans</title>
-        <link rel="stylesheet" th:href="@{/style.css}"/>
         <meta charset="utf-8"/>
+        <link rel="stylesheet" th:href="@{css/style.css}"/>
+        <title>MovieDB Shenanigans</title>
     </head>
     <body>
         <main>
+            <img src="images/profile.png" class="profile-image" alt="Profile picture placeholder">
             <form action="/login" method="post">
                 <input class="field" type="text" name="username" placeholder="Username" required>
                 <input class="field" type="password" name="password" placeholder="Password" required>
