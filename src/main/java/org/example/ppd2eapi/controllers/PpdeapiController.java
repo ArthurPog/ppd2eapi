@@ -10,8 +10,13 @@ public record PpdeapiController() {
         return "index";
     }
 
-    @GetMapping({"/register"})
+    @GetMapping("/register")
     public String register() {
         return "register";
+    }
+
+    @GetMapping("/search")
+    public String search() {
+        return "search";
     }
 }
