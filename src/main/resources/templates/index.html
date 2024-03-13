@@ -8,9 +8,9 @@
     <body>
         <main>
             <form action="/login" method="post">
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="submit" value="Log in">
+                <input class="field" type="text" name="username" placeholder="Username" required>
+                <input class="field" type="password" name="password" placeholder="Password" required>
+                <input class="button" type="submit" value="Log in">
             </form>
             <p>Don't have an account? </p>
             <a th:href="@{/register}">Register here</a>
