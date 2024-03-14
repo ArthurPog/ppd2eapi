@@ -11,7 +11,7 @@
                 <input class="field" type="query" name="query" placeholder="Search" required>
                 <input class="button" type="submit" value="Search">
             </form>
-<!--                        <h1>Hello World!</h1>-->
+
             <div class="results" th:if="${queryTrigger}">
                 <p class="announcement" th:if="${#lists.isEmpty(myMovies)}">No movies matching search found</p>
                 <table th:if="${not #lists.isEmpty(myMovies)}">
