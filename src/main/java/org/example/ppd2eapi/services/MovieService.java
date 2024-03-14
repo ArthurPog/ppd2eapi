@@ -1,5 +1,6 @@
 package org.example.ppd2eapi.services;
 
+import org.example.ppd2eapi.models.DTOs.MovieResponseDTO;
 import org.example.ppd2eapi.models.Movie;
 
 import java.util.List;
@@ -10,4 +11,6 @@ public interface MovieService {
 
     List<Movie> getMyMovies();
     List<Movie> findByTitle(String title);
+
+    MovieResponseDTO getMovies(String title);
 }
