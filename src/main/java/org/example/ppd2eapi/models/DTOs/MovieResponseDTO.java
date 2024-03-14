@@ -1,20 +1,20 @@
 package org.example.ppd2eapi.models.DTOs;
 
-import com.google.gson.annotations.SerializedName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class MovieResponseDTO {
 
-    private Long id;
-    private String title;
-    @SerializedName("release_date")
-    private Date releaseDate;
-    private String overview;
+    List<MovieDTO> results = new ArrayList<>();
+
+    public void add(MovieDTO movieDTO) {
+        this.results.add(movieDTO);
+    }
 }

@@ -7,28 +7,13 @@
     </head>
     <body>
         <main>
-            <form th:action="@{/search-movie}" method="get">
-                <input class="field" type="query" name="query" placeholder="Search" required>
+            <form th:action="@{/search}" method="Post">
+                <input class="field" type="text" name="query" required>
                 <input class="button" type="submit" value="Search">
             </form>
 
-            <div class="results" th:if="${queryTrigger}">
-                <p class="announcement" th:if="${#lists.isEmpty(myMovies)}">No movies matching search found</p>
-                <table th:if="${not #lists.isEmpty(myMovies)}">
-                    <thead>
-                        <tr>
-                            <th>Movie ID</th>
-                            <th>Title</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="movie : ${myMovies}" th:object="${movie}">
-                            <td th:text="*{id}"></td>
-                            <td th:text="*{title}"></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <div><p class="announcement" th:if="${message}" th:text="${message}"></p></div>
+            <div th:replace="~{fragments/resultMovie :: result}"></div>
         </main>
     </body>
 </html>

@@ -1,10 +1,12 @@
 package org.example.ppd2eapi.controllers;
 
+import org.example.ppd2eapi.models.DTOs.MovieResponseDTO;
 import org.example.ppd2eapi.models.Movie;
 import org.example.ppd2eapi.models.User;
 import org.example.ppd2eapi.services.MovieService;
 import org.example.ppd2eapi.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,18 +23,14 @@ public class Ppd2eapiController {
     private final UserService userService;
     private final MovieService movieService;
 
-    private boolean queryTrigger = false;
-
     @Autowired
     public Ppd2eapiController(UserService userService, MovieService movieService) {
         this.userService = userService;
         this.movieService = movieService;
     }
 
-
-    @GetMapping({"/", " ", "/home", "/index.html"})
+    @GetMapping({"/", " ", "/home"})
     public String homePage() {
-        this.queryTrigger = false;
         return "index";
     }
 
@@ -56,19 +54,18 @@ public class Ppd2eapiController {
     }
 
     @GetMapping("/search")
-    public String search(Model model) {
-        model.addAttribute("myMovies", movieService.getMyMovies());
-        model.addAttribute("queryTrigger", this.queryTrigger);
+    public String search() {
         return "search";
     }
 
-    @GetMapping("/search-movie")
-    public String searchMovies(@RequestParam(required = false, defaultValue = "") String query, Model model) {
-        this.queryTrigger = true;
-        List<Movie> myMovies = movieService.findByTitle(query);
-        model.addAttribute("queryTrigger", this.queryTrigger);
-        model.addAttribute("myMovies", myMovies);
+    @PostMapping("/search")
+    public String getMovies(@RequestParam(required = false, defaultValue = "") String query, Model model) {
+        MovieResponseDTO movieResponseDTO = movieService.getMovies(query);
+        if (movieResponseDTO.getResults().isEmpty()) {
+            model.addAttribute("message", "No movies matching search found");
+        } else {
+            model.addAttribute("movieResponseDTO", movieResponseDTO);
+        }
         return "search";
     }
-
 }

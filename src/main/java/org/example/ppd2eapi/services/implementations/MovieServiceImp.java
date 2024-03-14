@@ -1,5 +1,6 @@
 package org.example.ppd2eapi.services.implementations;
 
+import org.example.ppd2eapi.models.DTOs.MovieDTO;
 import org.example.ppd2eapi.models.DTOs.MovieResponseDTO;
 import org.example.ppd2eapi.models.Movie;
 import org.example.ppd2eapi.repositories.MovieRepo;
@@ -59,22 +60,49 @@ public class MovieServiceImp implements MovieService {
         return movieRepo.findAllByTitleContainingIgnoreCase(title);
     }
 
-
     @Override
     public MovieResponseDTO getMovies(String title) {
-        Call<MovieResponseDTO> fetchData = movieAPI.fetchMovies(title, acceptValue, key);
-        MovieResponseDTO result = null;
+        List<Movie> moviesFromDB = movieRepo.findAllByTitleContainingIgnoreCase(title);
+        if (moviesFromDB.isEmpty()) {
+            Call<MovieResponseDTO> sendRequest = movieAPI.fetchMovies(title, acceptValue, key);
+            MovieResponseDTO result = null;
 
-        try {
-            Response<MovieResponseDTO> tryFetchData = fetchData.execute();
-            if(tryFetchData.isSuccessful()  && tryFetchData.body() !=null){
-                result = tryFetchData.body();
+        /* statements for testing it works
+        System.out.println(fetchData.toString());
+        // Print the request URL
+        System.out.println("Request URL: " + fetchData.request().url());
+        // Print the request headers
+        Headers headers = fetchData.request().headers();
+        for (int i = 0, size = headers.size(); i < size; i++) {
+            System.out.println(headers.name(i) + ": " + headers.value(i));
+        }
+        */
+
+            try {
+                Response<MovieResponseDTO> tryFetchData = sendRequest.execute();
+                if (tryFetchData.isSuccessful() && tryFetchData.body() != null) {
+                    System.out.println(tryFetchData.body());
+                    result = tryFetchData.body();
+                }
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
 
-        } catch (IOException e){
-            throw new RuntimeException(e);
+            // save it into DB
+            for (MovieDTO movieDTO : result.getResults()){
+                movieRepo.save(new Movie(movieDTO));
+            }
+
+            return result;
+        } else {
+            // there should be some way to make it more simple
+            MovieResponseDTO movieResponseDTO = new MovieResponseDTO();
+            for (Movie movie : moviesFromDB){
+                movieResponseDTO.add(new MovieDTO(movie));
+            }
+            return movieResponseDTO;
         }
-        return result;
     }
 
     public void setMyMovies(List<Movie> myMovies) {

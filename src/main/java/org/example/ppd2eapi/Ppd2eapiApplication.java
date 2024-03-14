@@ -21,7 +21,7 @@ public class Ppd2eapiApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        movieService.save(new Movie("Shawshank Redemption"));
+        movieService.save(new Movie("Shawshank Redemption", "1994-09-23", "nothing"));
 
     }
 }
