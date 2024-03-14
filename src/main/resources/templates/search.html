@@ -13,17 +13,17 @@
             </form>
 
             <div class="results" th:if="${queryTrigger}">
-                <p class="announcement" th:if="${#lists.isEmpty(myMovies)}">No movies matching search found</p>
+                <p class="error" th:if="${#lists.isEmpty(myMovies)}">No movies matching search found</p>
                 <table th:if="${not #lists.isEmpty(myMovies)}">
                     <thead>
                         <tr>
-                            <th>Movie ID</th>
-                            <th>Title</th>
+<!--                            <th>Movie ID</th>-->
+                            <th>Titles that match</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="movie : ${myMovies}" th:object="${movie}">
-                            <td th:text="*{id}"></td>
+<!--                            <td th:text="*{id}"></td>-->
                             <td th:text="*{title}"></td>
                         </tr>
                     </tbody>

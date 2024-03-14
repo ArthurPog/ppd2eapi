@@ -30,7 +30,7 @@ public class Ppd2eapiController {
     }
 
 
-    @GetMapping({"/", " ", "/home", "/index.html"})
+    @GetMapping({"/", " ", "/home"})
     public String homePage() {
         this.queryTrigger = false;
         return "index";

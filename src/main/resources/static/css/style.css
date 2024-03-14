@@ -19,6 +19,7 @@ font-sizes and line-heights as variables */
     --grey: #87879D;
     --grey-25: hsla(240, 10%, 57%, 25%);
     --cyan: #8FE3F9;
+    --warning-red: #DA3D1B;
 
     --light-purple: #D9B8FF;
     --white: #FAFAFA;
@@ -51,6 +52,10 @@ main {
     box-shadow: 0px 11px 34px -13px rgba(0,0,0,0.75);
 }
 
+p {
+    margin: 1rem 0;
+}
+
 *:focus {
     outline: solid var(--black) 2px;
     outline-offset: 4px;
@@ -63,19 +68,20 @@ main {
     padding: .5rem;
     border-radius: .5rem;
     border-style: hidden;
-    margin: .5rem 0;
+    margin: 1rem 0;
 }
 
 .button {
     font-family: 'Red Hat Display', sans-serif;
     font-weight: 900;
     font-size: 1rem;
-    margin: .5rem 0;
+    margin-bottom: 1rem;
     border-style: hidden;
     padding: .5rem 2rem;
     border-radius: .5rem;
     background: var(--teal);
     color: white;
+    width: 100%;
 }
 
 .button:hover {
@@ -109,3 +115,10 @@ a:hover {
     margin-top: 2rem;
 }
 
+.error, .important {
+    color: red;
+}
+
+td {
+    padding: .5rem 1rem;
+}
