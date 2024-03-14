@@ -36,7 +36,7 @@ public class Ppd2eapiController {
         return "index";
     }
 
-    @GetMapping("/index.html")
+    @PostMapping("/home")
     public String error(@RequestParam(required = false, defaultValue = "") boolean error, Model model) {
         model.addAttribute("error", error);
         return "index";

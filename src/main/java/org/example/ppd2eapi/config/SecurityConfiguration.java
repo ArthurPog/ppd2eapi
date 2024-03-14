@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration {
+public class SecurityConfiguration{
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -24,11 +24,13 @@ public class SecurityConfiguration {
                 .authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login.html")
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/search", true)
-                .failureUrl("/index.html?error=true")
-        ;
+                .failureForwardUrl("/home?error=true")
+                .permitAll()
+                .and()
+                .logout()
+                .permitAll();
 
         return http.build();
     }
