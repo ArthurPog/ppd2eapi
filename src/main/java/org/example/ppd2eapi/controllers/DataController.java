@@ -15,9 +15,9 @@ public class DataController {
     @Autowired
     private MovieService movieService;
 
-    @GetMapping("/movies/{title}")
-    public MovieResponseDTO getMoviesDTO(@PathVariable String title){
-        return movieService.getMovies(title);
+    @GetMapping("/movie")
+    public MovieResponseDTO getMoviesDTO(){
+        return movieService.getMovies("shaw");
     }
 
 

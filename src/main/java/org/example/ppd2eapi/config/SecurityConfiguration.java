@@ -19,7 +19,7 @@ public class SecurityConfiguration{
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .requestMatchers("/", "/home", "/css/**", "/images/**", "/register").permitAll() // Permit access to home page without authentication
+                .requestMatchers("/", "/home", "/css/**", "/images/**", "/register", "/testing", "/testing/movies/shaw").permitAll() // Permit access to home page without authentication
                 .anyRequest()
                 .authenticated()
                 .and()

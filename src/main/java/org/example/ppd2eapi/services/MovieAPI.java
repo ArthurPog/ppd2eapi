@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface MovieAPI {
 
-    @GET("movies")
+    @GET("movie")
     Call<MovieResponseDTO> fetchMovies(@Query("query") String title, @Header("accept") String acceptValue, @Header("Authorization") String key);
 }
