@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class Ppd2eapiController {
@@ -31,9 +30,15 @@ public class Ppd2eapiController {
     }
 
 
-    @GetMapping({"/", " ", "/home"})
+    @GetMapping({"/", " ", "/home", "/index.html"})
     public String homePage() {
         this.queryTrigger = false;
+        return "index";
+    }
+
+    @GetMapping("/index.html")
+    public String error(@RequestParam(required = false, defaultValue = "") boolean error, Model model) {
+        model.addAttribute("error", error);
         return "index";
     }
 
