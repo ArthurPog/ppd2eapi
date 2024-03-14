@@ -7,7 +7,7 @@
     </head>
     <body>
         <main>
-            <form action="/search-movie" method="get">
+            <form th:action="@{/search-movie}" method="get">
                 <input class="field" type="query" name="query" placeholder="Search" required>
                 <input class="button" type="submit" value="Search">
             </form>
