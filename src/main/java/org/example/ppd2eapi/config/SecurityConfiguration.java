@@ -1,22 +1,23 @@
-//package org.example.ppd2eapi.config;
-//
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-//import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-//import org.springframework.security.web.SecurityFilterChain;
-//
-//
-//@Configuration
-//@EnableWebSecurity
-//public class SecurityConfiguration {
-//
-//    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-//        http.authorizeRequests()
-//                .requestMatchers("/", "/home", "/style.css", "/register", "/search", "/add-user", "/login").permitAll() // Permit access to home page without authentication
-//                .anyRequest().authenticated();
-//
-//        return http.build();
-//    }
-//}
+package org.example.ppd2eapi.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfiguration {
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .requestMatchers("/", "/home", "/css/**", "/images/**", "/register").permitAll() // Permit access to home page without authentication
+                .anyRequest()
+                .authenticated();
+
+        return http.build();
+    }
+}

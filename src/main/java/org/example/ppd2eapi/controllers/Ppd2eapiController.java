@@ -37,13 +37,6 @@ public class Ppd2eapiController {
         return "index";
     }
 
-    @PostMapping("/login")
-    public String logIn(@ModelAttribute User user) {
-        // If the user exists return "redirect:/search"
-        // If the user doesn't exist return "redirect:/home"
-        return "redirect:/search";
-    }
-
     @GetMapping("/register")
     public String register(Model model) {
         User user = new User();
